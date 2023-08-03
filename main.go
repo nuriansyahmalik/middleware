@@ -11,8 +11,10 @@ import (
 
 func main() {
 	r := chi.NewRouter()
+	//Exercise1
 	router(r)
 
+	//Exercise2
 	jwtTOkens, _ := generateJwt()
 	fmt.Println(jwtTOkens)
 	fmt.Println(validateJwt(jwtTOkens))
@@ -23,6 +25,7 @@ func main() {
 var xApiKey = "apikey"
 var secretKey = []byte("secret")
 
+// Exercise1
 func router(r chi.Router) http.Handler {
 	r.Use(middleware.Logger)
 	r.Use(middleware.RequestID)
@@ -58,6 +61,7 @@ func LoggingMiddleware(next http.Handler) http.Handler {
 	})
 }
 
+// Exercise2
 type Claims struct {
 	UserID   int    `json:"userID"`
 	Username string `json:"username"`
